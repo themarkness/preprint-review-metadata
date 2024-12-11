@@ -1,41 +1,15 @@
-# Website
+# Preprint Review Metadata Documentation
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator and continuously deployed to [Vercel](https://vercel.com/).
 
-### Installation
+Content for the site can be found in https://github.com/themarkness/preprint-review-metadata/tree/a5323003be8a51446eb0a44fe41588bf379a2ec5/docs
 
-```
-$ yarn
-```
-
-### Local Development
+## Local development
+To preview your changes as you edit the files, you can run a local development server that will serve the website and reflect the latest changes.
 
 ```
-$ yarn start
+npm run start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
-
-```
-$ yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+## Deployment
+Commiting directly to main/merging a pull request will trigger a deployment to [https://preprint-review-metadata.vercel.app]
