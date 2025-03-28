@@ -1,8 +1,8 @@
 name: preprint-review-metadata
 title: Preprint Review Metadata Modelling
 description: A collection of metadata models for preprint reviews
-baseurl: ""
-url: ""
+baseurl: "/preprint-review-metadata"
+url: "https://themarkness.github.io"
 
 # Add your Bluesky handle here
 bluesky_handle: your-handle.bsky.social
