@@ -4,6 +4,8 @@ title: Preprint Review Metadata Modelling
 bluesky_post_uri: https://bsky.app/profile/mark2d2.bsky.social/post/3llh4uahxbk2v
 ---
 
+{% include sidebar.html %}
+
 ##  **Inputs**
 
 ### PID of preprint reviewed (essential 🟢)
