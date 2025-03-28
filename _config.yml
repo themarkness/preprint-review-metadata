@@ -1,2 +1,12 @@
 name: preprint-review-metadata
-title: null
+title: Preprint Review Metadata Modelling
+description: A collection of metadata models for preprint reviews
+baseurl: ""
+url: ""
+
+# Add your Bluesky handle here
+bluesky_handle: your-handle.bsky.social
+
+# Build settings
+markdown: kramdown
+theme: minima
