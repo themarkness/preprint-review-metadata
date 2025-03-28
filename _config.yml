@@ -5,7 +5,7 @@ baseurl: "/preprint-review-metadata"
 url: "https://themarkness.github.io"
 
 # Add your Bluesky handle here
-bluesky_handle: your-handle.bsky.social
+bluesky_handle: mark2d2.bsky.social
 
 # Build settings
 markdown: kramdown

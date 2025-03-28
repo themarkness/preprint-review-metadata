@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Preprint Review Metadata Modelling
-bluesky_post_uri: https://bsky.app/profile/your-handle.bsky.social/post/your-post-uri
+bluesky_post_uri: https://bsky.app/profile/mark2d2.bsky.social/post/3llh4uahxbk2v
 ---
 
 ##  **Inputs**
