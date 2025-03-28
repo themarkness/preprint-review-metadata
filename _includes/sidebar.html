@@ -1,10 +1,12 @@
-<div id="sidebar" class="sidebar">
-    <button id="sidebar-toggle" class="sidebar-toggle">☰</button>
-    <div class="sidebar-content">
-        <h3>Table of Contents</h3>
-        <nav id="toc">
-            <!-- Table of contents will be populated by JavaScript -->
-        </nav>
+<div class="sidebar-container">
+    <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle Table of Contents">☰</button>
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-content">
+            <h3>Table of Contents</h3>
+            <nav id="toc" class="toc">
+                <!-- Table of contents will be populated by JavaScript -->
+            </nav>
+        </div>
     </div>
 </div>
 
@@ -14,31 +16,72 @@ document.addEventListener('DOMContentLoaded', function() {
     const sidebarToggle = document.getElementById('sidebar-toggle');
     const toc = document.getElementById('toc');
     
+    if (!sidebar || !sidebarToggle || !toc) {
+        console.error('Required sidebar elements not found');
+        return;
+    }
+
+    // Clear any existing content
+    toc.innerHTML = '';
+    
     // Toggle sidebar
-    sidebarToggle.addEventListener('click', () => {
+    function toggleSidebar(e) {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
         sidebar.classList.toggle('open');
+        sidebarToggle.classList.toggle('open');
+    }
+
+    sidebarToggle.addEventListener('click', toggleSidebar);
+
+    // Close sidebar when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!sidebar.contains(e.target) && 
+            !sidebarToggle.contains(e.target) && 
+            sidebar.classList.contains('open')) {
+            toggleSidebar();
+        }
     });
 
     // Generate table of contents
-    const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
-    headings.forEach((heading, index) => {
-        // Add ID to heading if it doesn't have one
-        if (!heading.id) {
-            heading.id = `heading-${index}`;
-        }
+    const content = document.querySelector('.post-content');
+    if (content) {
+        const headings = Array.from(content.querySelectorAll('h2, h3, h4, h5, h6'));
+        if (headings.length > 0) {
+            const tocList = document.createElement('ul');
+            tocList.className = 'toc-list';
 
-        // Create link
-        const link = document.createElement('a');
-        link.href = `#${heading.id}`;
-        link.textContent = heading.textContent;
-        
-        // Create list item with appropriate indentation
-        const li = document.createElement('li');
-        li.style.marginLeft = `${(parseInt(heading.tagName[1]) - 1) * 1.5}rem`;
-        li.appendChild(link);
-        
-        // Add to TOC
-        toc.appendChild(li);
-    });
+            headings.forEach((heading, index) => {
+                // Add ID to heading if it doesn't have one
+                if (!heading.id) {
+                    heading.id = `heading-${index}`;
+                }
+
+                // Create list item
+                const li = document.createElement('li');
+                li.className = `toc-item toc-${heading.tagName.toLowerCase()}`;
+                
+                // Create link
+                const link = document.createElement('a');
+                link.href = `#${heading.id}`;
+                link.textContent = heading.textContent.trim();
+                link.className = 'toc-link';
+                
+                // Add click handler to close sidebar on mobile
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        toggleSidebar();
+                    }
+                });
+                
+                li.appendChild(link);
+                tocList.appendChild(li);
+            });
+
+            toc.appendChild(tocList);
+        }
+    }
 });
 </script> 
