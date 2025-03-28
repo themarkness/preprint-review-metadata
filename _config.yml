@@ -1,12 +1,11 @@
-name: preprint-review-metadata
 title: Preprint Review Metadata Modelling
 description: A collection of metadata models for preprint reviews
 baseurl: "/preprint-review-metadata"
 url: "https://themarkness.github.io"
 
-# Add your Bluesky handle here
+# Bluesky configuration
 bluesky_handle: mark2d2.bsky.social
 
 # Build settings
-markdown: kramdown
 theme: minima
+markdown: kramdown
