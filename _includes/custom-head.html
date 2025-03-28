@@ -1,5 +1,13 @@
+{% comment %}
+  Placeholder to allow defining custom head, in principle, you can add anything here, e.g. favicons:
+
+  1. Head over to https://realfavicongenerator.net/ to add your own favicons.
+  2. Customize default _includes/custom-head.html in your source directory and insert the given code snippet.
+{% endcomment %}
+
 {%- if page.bluesky_post_uri and jekyll.environment == "production" -%}
-<link rel="stylesheet" href="https://unpkg.com/@bluesky-social/bluesky-comments@0.1.0/dist/bluesky-comments.css">
+<link rel="stylesheet" href="https://unpkg.com/bluesky-comments@0.8.0/dist/bluesky-comments.css">
+
 <!-- Add this new importmap before any other scripts -->
 <script type="importmap">
   {
@@ -9,9 +17,11 @@
     }
   }
 </script>
+
 <!-- Add this new module script -->
 <script type="module">
-  import {BlueskyComments} from 'https://unpkg.com/@bluesky-social/bluesky-comments@0.1.0/dist/bluesky-comments.es.js';
+  import {BlueskyComments} from 'https://unpkg.com/bluesky-comments@0.8.0/dist/bluesky-comments.es.js';
+
   document.addEventListener('DOMContentLoaded', function() {
     const uri = '{{page.bluesky_post_uri}}';
     const author = '{{site.bluesky_handle}}';
