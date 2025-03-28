@@ -4,6 +4,7 @@
     --background-color: #fff;
     --header-background: #f8f9fa;
     --link-color: #0366d6;
+    --sidebar-width: 300px;
 }
 
 body {
@@ -21,6 +22,79 @@ body {
     margin-left: auto;
     padding-right: 30px;
     padding-left: 30px;
+    position: relative;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -var(--sidebar-width);
+    width: var(--sidebar-width);
+    height: 100vh;
+    background-color: var(--header-background);
+    border-right: 1px solid #eaecef;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar-toggle {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1001;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    background-color: var(--header-background);
+    border: 1px solid #eaecef;
+}
+
+.sidebar-content {
+    padding: 1rem;
+    margin-top: 3rem;
+}
+
+.sidebar-content h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 0.5rem;
+}
+
+#toc {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#toc li {
+    margin: 0.5rem 0;
+}
+
+#toc a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: block;
+    padding: 0.25rem 0;
+}
+
+#toc a:hover {
+    color: var(--link-color);
+}
+
+/* Adjust main content when sidebar is open */
+.sidebar.open + .wrapper {
+    margin-left: var(--sidebar-width);
 }
 
 /* Header */
@@ -126,5 +200,17 @@ code {
     
     .footer-col-wrapper {
         flex-direction: column;
+    }
+
+    .sidebar {
+        left: -100%;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .sidebar.open + .wrapper {
+        margin-left: 0;
     }
 } 
